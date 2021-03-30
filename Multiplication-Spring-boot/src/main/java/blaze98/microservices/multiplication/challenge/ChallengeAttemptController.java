@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -18,7 +20,7 @@ public class ChallengeAttemptController {
 
     @PostMapping
     ResponseEntity<ChallengeAttempt> postResult
-            (@RequestBody ChallengeAttemptDto challengeAttemptDto){
+            (@RequestBody @Valid ChallengeAttemptDto challengeAttemptDto){
         return ResponseEntity.ok(challengeService.verifyAttempt(challengeAttemptDto));
     }
 }
