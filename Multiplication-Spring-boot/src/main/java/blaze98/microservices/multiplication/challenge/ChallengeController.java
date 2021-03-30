@@ -2,9 +2,9 @@ package blaze98.microservices.multiplication.challenge;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.coyote.Response;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/challenges")
 public class ChallengeController {
     private final ChallengeGeneratorService challengeGeneratorService;
+    private final ChallengeService challengeService;
 
     @GetMapping("/random")
     Challenge getRandomChallenge() {
@@ -19,5 +20,6 @@ public class ChallengeController {
         log.info("Generating a random challenge: {}",challenge);
         return challenge;
     }
+
 
 }
