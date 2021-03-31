@@ -11,5 +11,5 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Challenge {
     private int factorA;
-    private int fatorB;
+    private int factorB;
 }
