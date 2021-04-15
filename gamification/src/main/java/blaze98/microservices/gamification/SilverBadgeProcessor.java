@@ -13,7 +13,7 @@ public class SilverBadgeProcessor implements BadgeProcessor{
             List<ScoreCard> scoreCardList,
             ChallengeSolvedDTO solved
     ){
-        return currentScore > 150 ? Optional.of(BadgeType.SILVER) : Optional.empty();
+        return currentScore > 40 ? Optional.of(BadgeType.SILVER) : Optional.empty();
     }
     @Override
     public BadgeType badgeType(){

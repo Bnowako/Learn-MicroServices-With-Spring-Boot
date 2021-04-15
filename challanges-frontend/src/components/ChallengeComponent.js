@@ -1,6 +1,7 @@
 import * as React from "react";
 import ApiClient from "../services/ApiClient";
-import LastAttemptsComponent from './LastAttemptsComponent'
+import LastAttemptsComponent from './LastAttemptsComponent';
+import LeaderBoardComponent from './LeaderBoardComponent';
 class ChallengeComponent extends React.Component {
     
     constructor(props) {
@@ -126,6 +127,10 @@ class ChallengeComponent extends React.Component {
                 </form>
                 <h4>{this.state.message}</h4>
                     <LastAttemptsComponent lastAttempts={this.state.lastAttempts}/>
+                    <div className="display-column">
+                {/* we add this just before closing the main div */}
+                <LeaderBoardComponent />
+                </div>
             </div>
         );
     }

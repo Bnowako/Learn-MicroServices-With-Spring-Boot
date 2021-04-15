@@ -13,7 +13,7 @@ public class GoldBadgeProcessor implements BadgeProcessor{
             List<ScoreCard> scoreCardList,
             ChallengeSolvedDTO solved
     ){
-        return currentScore > 400 ? Optional.of(BadgeType.GOLD) : Optional.empty();
+        return currentScore > 50 ? Optional.of(BadgeType.GOLD) : Optional.empty();
     }
     @Override
     public BadgeType badgeType(){

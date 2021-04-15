@@ -15,7 +15,7 @@ public class BronzeBadgeProcessor implements BadgeProcessor{
             List<ScoreCard> scoreCardList,
             ChallengeSolvedDTO solved
     ){
-        return currentScore > 50 ? Optional.of(BadgeType.BRONZE) : Optional.empty();
+        return currentScore > 30 ? Optional.of(BadgeType.BRONZE) : Optional.empty();
     }
     @Override
     public BadgeType badgeType(){

@@ -1,9 +1,11 @@
 package blaze98.microservices.multiplication.challenge;
 
+import blaze98.microservices.multiplication.GamificationServiceClient;
 import blaze98.microservices.multiplication.user.User;
 import blaze98.microservices.multiplication.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +17,7 @@ public class ChallengeServiceImpl implements ChallengeService{
 
     private final UserRepository userRepository;
     private final ChallengeAttemptRepository challengeAttemptRepository;
+    private final GamificationServiceClient gameClient;
 
 
 
@@ -42,6 +45,10 @@ public class ChallengeServiceImpl implements ChallengeService{
                         challengeAttemptDto.getGuess(),
                         isCorrect);
         ChallengeAttempt storedAttempt = challengeAttemptRepository.save(checkedAttempt);
+
+        boolean status = gameClient.sendAttempt(storedAttempt);
+        log.info("Gamification service response: {}", status);
+
     return storedAttempt;
     }
 
