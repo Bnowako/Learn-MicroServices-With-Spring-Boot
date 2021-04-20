@@ -13,7 +13,7 @@ public class BronzeBadgeProcessor implements BadgeProcessor{
     public Optional<BadgeType> processForOptionalBadge(
             int currentScore,
             List<ScoreCard> scoreCardList,
-            ChallengeSolvedDTO solved
+            ChallengeSolvedEvent solved
     ){
         return currentScore > 30 ? Optional.of(BadgeType.BRONZE) : Optional.empty();
     }

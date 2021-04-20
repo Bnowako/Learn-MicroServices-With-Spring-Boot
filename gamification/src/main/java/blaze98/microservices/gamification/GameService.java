@@ -6,7 +6,7 @@ import lombok.Value;
 import java.util.List;
 
 public interface GameService {
-    GameResult newAttemptForUser(ChallengeSolvedDTO challenge);
+    GameResult newAttemptForUser(ChallengeSolvedEvent challenge);
 
     @Value
     class GameResult{

@@ -23,34 +23,30 @@ public class GameServiceImpl implements GameService {
     private final List<BadgeProcessor> badgeProcessors;
 
     @Override
-    public GameResult newAttemptForUser(final ChallengeSolvedDTO challenge){
-        if(challenge.isCorrect()){
+    public GameResult newAttemptForUser(final ChallengeSolvedEvent challenge) {
+        // We give points only if it's correct
+        if (challenge.isCorrect()) {
             ScoreCard scoreCard = new ScoreCard(challenge.getUserId(),
                     challenge.getAttemptId());
             scoreRepository.save(scoreCard);
             log.info("User {} scored {} points for attempt id {}",
-                    challenge.getUserAlias(),
-                    scoreCard.getScore(),
+                    challenge.getUserAlias(), scoreCard.getScore(),
                     challenge.getAttemptId());
             List<BadgeCard> badgeCards = processForBadges(challenge);
-
             return new GameResult(scoreCard.getScore(),
-                    badgeCards
-                            .stream()
-                            .map(BadgeCard::getBadgeType)
+                    badgeCards.stream().map(BadgeCard::getBadgeType)
                             .collect(Collectors.toList()));
-        }else{
+        } else {
             log.info("Attempt id {} is not correct. " +
-                    "User {} does not get score.",
+                            "User {} does not get score.",
                     challenge.getAttemptId(),
                     challenge.getUserAlias());
-            return new GameResult(0,List.of());
+            return new GameResult(0, List.of());
         }
-
     }
 
     private List<BadgeCard> processForBadges(
-            final ChallengeSolvedDTO solvedChallenge) {
+            final ChallengeSolvedEvent solvedChallenge) {
         Optional<Integer> optTotalScore = scoreRepository.
                 getTotalScoreForUser(solvedChallenge.getUserId());
         if (optTotalScore.isEmpty()) return Collections.emptyList();

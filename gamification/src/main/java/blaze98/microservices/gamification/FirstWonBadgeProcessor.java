@@ -11,7 +11,7 @@ public class FirstWonBadgeProcessor implements BadgeProcessor{
     public Optional<BadgeType> processForOptionalBadge(
             int currentScore,
             List<ScoreCard> scoreCardList,
-            ChallengeSolvedDTO solved) {
+            ChallengeSolvedEvent solved) {
         return scoreCardList.size() == 1 ?
                 Optional.of(BadgeType.FIRST_WON) : Optional.empty();
     }
