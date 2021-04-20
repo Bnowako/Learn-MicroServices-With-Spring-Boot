@@ -11,7 +11,7 @@ public class GoldBadgeProcessor implements BadgeProcessor{
     public Optional<BadgeType> processForOptionalBadge(
             int currentScore,
             List<ScoreCard> scoreCardList,
-            ChallengeSolvedDTO solved
+            ChallengeSolvedEvent solved
     ){
         return currentScore > 50 ? Optional.of(BadgeType.GOLD) : Optional.empty();
     }

@@ -11,7 +11,7 @@ public class LuckyNumberBadgeProcessor implements BadgeProcessor{
     public Optional<BadgeType> processForOptionalBadge(
             int currentScore,
             List<ScoreCard> scoreCardList,
-            ChallengeSolvedDTO solved
+            ChallengeSolvedEvent solved
     ){
         return solved.getFactorA() == 42 || solved.getFactorB() == 42 ? Optional.of(BadgeType.LUCKY_NUMBER) : Optional.empty();
     }

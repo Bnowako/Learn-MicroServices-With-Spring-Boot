@@ -10,6 +10,6 @@ public interface BadgeProcessor {
     Optional<BadgeType> processForOptionalBadge(
             int currentScore,
             List<ScoreCard> scoreCardList,
-            ChallengeSolvedDTO solved);
+            ChallengeSolvedEvent solved);
     BadgeType badgeType();
 }

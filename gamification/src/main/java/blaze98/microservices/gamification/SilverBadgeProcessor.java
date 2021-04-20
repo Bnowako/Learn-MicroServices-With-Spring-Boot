@@ -11,7 +11,7 @@ public class SilverBadgeProcessor implements BadgeProcessor{
     public Optional<BadgeType> processForOptionalBadge(
             int currentScore,
             List<ScoreCard> scoreCardList,
-            ChallengeSolvedDTO solved
+            ChallengeSolvedEvent solved
     ){
         return currentScore > 40 ? Optional.of(BadgeType.SILVER) : Optional.empty();
     }
